@@ -8,6 +8,7 @@ public class Main {
 
         boolean RUNNING = true;
 
+        System.out.println("############################");
         System.out.println("Rock, Paper, Scissors: ");
         Scanner userInput = new Scanner(System.in);
 
@@ -16,6 +17,7 @@ public class Main {
         {
             String playerIntention = "";
             while(!(playerIntention.equals("1") || playerIntention.equals("2") || playerIntention.equals("3"))) {
+
                 System.out.println("1 - Rock \n2 - Paper\n3 - Scissors");
                 System.out.println("What is your move?");
                 playerIntention = userInput.nextLine();
@@ -29,9 +31,7 @@ public class Main {
             System.out.println(printWinner);
 
             // RESTART
-            System.out.println("Play again? y/n");
-            String playAgain = userInput.nextLine();
-            RUNNING = playAgain.equalsIgnoreCase("y");
+            RUNNING = restartGame(userInput);
             System.out.println("############################");
         }
     }
@@ -56,5 +56,11 @@ public class Main {
         else{
             return "Congratulations! You win!";
         }
+    }
+
+    private static boolean restartGame(Scanner playerChoice){
+        System.out.println("Play again? y/n");
+        String playAgain = playerChoice.nextLine();
+        return playAgain.equalsIgnoreCase("y");
     }
 }
